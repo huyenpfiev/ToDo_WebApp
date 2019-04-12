@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "program": "C:/UwAmp/www/MongoDB/server.js"
+        // },
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "program": "C:/UwAmp/www/MongoDB/dataLayer.js"
+        // },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "C:/UwAmp/www/MongoDB/app2.js"
+        },
+        
+
+        
+
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "C:/UwAmp/www/MongoDB/insert.js"
+        }
+    ]
+}

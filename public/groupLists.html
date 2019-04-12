@@ -1,0 +1,68 @@
+<!doctype html>
+<html ng-app="groupLists">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Todo Lists</title>
+    <script src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="js/groupLists.js"></script>
+
+</head>
+
+<body ng-controller="groupController">
+
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Welcome to "Todo" Application</h3>
+        <div class="card-body">
+                <form>
+                        <div class="form-row">
+                                <div class="col-10">
+                                    <input type="text" class="form-control" placeholder="Create a project" ng-model="formData.name">
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary" ng-click="createProject()">Add a project</button>
+                                </div>
+                            </div>
+                  </form>
+            <h6 class="font-weight-bold">Number of projects: {{groups.length}}</h6>
+          <div id="table" class="table-editable">
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <tr>
+                <th class="text-center">Project Name</th>
+                <th class="text-center">Creation Date</th>
+                <th class="text-center">Open</th>
+                <th class="text-center">Delete</th>
+              </tr>
+              <tr ng-repeat="x in groups">
+                
+                <td>
+                  <span >{{x.name_list}}</span>
+                </td>
+                <td>
+                    <span contenteditable="false" >{{x.date | date:'dd-MM-yyyy'}}</span> 
+                </td>
+                <td>
+                  <span >
+                        <button type="button" class="btn btn-success btn-sm" ng-click="openProject(x.name_list)">Open</button>
+                  </span>
+                </td>
+                <td>
+                  <span class="table-remove">
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteProject(x._id,x.name_list)">Delete</button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+      
+</body>
+
+</html>
+
+
+

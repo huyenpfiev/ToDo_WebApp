@@ -1,0 +1,78 @@
+<!doctype html>
+<html ng-app="ListeaFaire">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Liste Choses a Faire</title>
+    <script src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="js/toDoList.js"></script>
+
+</head>
+
+<body ng-controller="mainController">
+
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{laliste[0].list_name}}</h3>
+       
+        <div class="card-body">
+                <form>
+                        <div class="form-row">
+                                <div class="col-10">
+                                    <input type="text" class="form-control" placeholder="Write something to do" ng-model="formData.name">
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary" ng-click="createTodo()">Add a to-do</button>
+                                </div>
+                            </div>
+                  </form>
+            <h6 class="font-weight-bold">Number of tasks: {{laliste.length}}</h6>
+          <div id="table" class="table-editable">
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <tr>
+                <th class="text-center">Done</th>
+                <th class="text-center">Task</th>
+                <th class="text-center">Creation Date</th>
+                <th class="text-center">Edit</th>
+                <th class="text-center">Delete</th>
+              </tr>
+              <tr ng-repeat="x in laliste">
+                <td>
+                    <span>
+                        <input type="checkbox" ng-model="x.done" ng-click="updateDone(x)" >
+                    </span>
+                </td>
+                <td>
+                  <span ng-show="!edit; x.done ==false">{{x.name}}</span>
+                  <span ng-show="!edit; x.done ==true"><strike>{{x.name}}</strike></span>
+                  <input ng-show="edit == true" ng-model="x.new_name" autofocus>
+                </td>
+                <td>
+                    <span contenteditable="false" >{{x.date | date:'dd-MM-yyyy'}}</span> 
+                </td>
+                <td>
+                  <span >
+                        <button type="button" class="btn btn-success btn-sm" ng-hide="hidden1" ng-click="edit=true;hidden1=true;hidden2=false">Edit</button>
+                        <button type="button" class="btn btn-success btn-sm" ng-hide="hidden2" ng-click="edit=false;hidden2=true;updateTodo(x)">Save</button>
+                  </span>
+                </td>
+                <td>
+                  <span class="table-remove">
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteTodo(x._id)">Delete</button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          
+        </div>
+      </div>
+      
+</body>
+
+</html>
+
+
+
