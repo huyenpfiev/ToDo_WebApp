@@ -54,9 +54,9 @@ var dataLayer={
             cb();
         });
     },
-    deleteProject:function(id,name,userID,cb){
+    deleteProject:function(name,userID,cb){
         
-        db.collection("Lists").deleteOne({_id: new ObjectID(id)},function(err,result){
+        db.collection("Lists").deleteOne({creator_id: new ObjectID(userID),name_list:name},function(err,result){
             db.collection("Task").deleteMany({user_id: new ObjectID(userID),list_name:name},function(err,result){
                 cb();
             });

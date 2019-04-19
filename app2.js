@@ -77,10 +77,10 @@ app.post('/addProject',function(req,res){
     }
 });
 //delete a project
-app.delete("/deleteProject/:id/:name",function(req,res){
-    var id=req.params.id;
+app.delete("/deleteProject/:name",function(req,res){//"/deleteProject/:id/:name"
+    //var id=req.params.id;
     var name=req.params.name;
-    dataLayer.deleteProject(id,name,userID,function(){
+    dataLayer.deleteProject(name,userID,function(){
         dataLayer.getGroupLists(userID,function(dtSet){
             res.send(dtSet);
         });  

@@ -31,9 +31,9 @@ groupLists.controller("groupController", function($scope,$http) {
     };
 
     // delete a project 
-    $scope.deleteProject = function(id,name) {
+    $scope.deleteProject = function(name) {
      
-        $http.delete('/deleteProject/'+id+'/'+name)
+        $http.delete('/deleteProject/'+name)//'/deleteProject/'+id+'/'+name
             .success(function(data) {
                 $scope.formData = {};
                 $scope.groups = data;
