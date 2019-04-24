@@ -14,7 +14,8 @@ ObjectID=require('mongodb').ObjectID;
 
 //start the application after the database connection is ready
 dataLayer.init(function(){
-    app.listen(3000);
+    var port = process.env.port || 3000;
+    app.listen(port);
     console.log("Listening on port 3000");
 });
 
