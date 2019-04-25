@@ -1,10 +1,9 @@
-# ToDo_WebApp
-[INFO_4A-S8] DINH Thi Thanh Huyen
-Web application: ToDo List
+#[INFO_4A-S8] DINH Thi Thanh Huyen.
+ Web application: ToDo List
 -------------------------------------------------------------------------
-Description:
+  Description:
 
-1.How to run code:
+1. How to run code:
 - Server: file app2.js
 - Before running server:
   ->change the path of "program" (see the file: launch.json)
