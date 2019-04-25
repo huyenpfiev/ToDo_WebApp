@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Todo Lists</title>
+    <title>Projects</title>
     <script src="js/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -15,14 +15,17 @@
 
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Welcome to "Todo" Application</h3>
+        <div >
+            <button type="submit" class="btn btn-secondary" ng-click="logout()" style="float: right;">Log out</button> 
+        </div>
         <div class="card-body">
                 <form>
                         <div class="form-row">
                                 <div class="col-10">
-                                    <input type="text" class="form-control" placeholder="Create a project" ng-model="formData.name">
+                                    <input type="text" class="form-control" placeholder="Create a project" ng-model="formData.name" required>
                                 </div>
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary" ng-click="createProject()">Add a project</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="createProject()" ng-disabled="!formData.name">Add a project</button>
                                 </div>
                             </div>
                   </form>

@@ -6,16 +6,21 @@ signUp.controller("signUpController", function($scope,$http) {
     $scope.checkSignUp = function() {
         $http.post('/checkSignUp', $scope.formData)
             .success(function(data) {
-                if(data.success){
-                    $scope.error="Successful!";
-                    localStorage.setItem("userID",data.id);
-                    window.location="groupLists.html";
+                if(data.error==true){
+                    $scope.error="Please fill out all fields!";
                 }
                 else{
-                    $scope.error="This username already existed!";
+                    if(data.success){
+                        $scope.error="Successful!";
+                        localStorage.setItem("userID",data.id);
+                        window.location="groupLists.html";
+                    }
+                    else{
+                        $scope.error="This username already existed!";
+                    }
+                        
                 }
                 
-
             })
             .error(function(data) {
                 console.log('Error: ' + data);

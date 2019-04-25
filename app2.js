@@ -31,9 +31,18 @@ app.post('/checkLogin',function(req,res){
         user:req.body.user,
         pass:req.body.pass
     }
-    dataLayer.checkLogin(acc,function(found,id){
-        res.send({ success: found, id: id });
-    });
+    if(typeof acc.user && typeof acc.pass !='undefined'){
+        dataLayer.checkLogin(acc,function(found,id){
+            res.send({ success: found, id: id });
+        });
+    }
+    else
+    {
+        res.send({
+            error:true,
+        });
+    }
+    
 });
 //sign up
 app.post('/checkSignUp',function(req,res){
@@ -43,9 +52,17 @@ app.post('/checkSignUp',function(req,res){
         userName:req.body.user,
         password:req.body.pass
     }
-    dataLayer.checkSignUp(acc,function(found,id){
-        res.send({ success: found, id: id });
-    });
+    if(typeof acc.firstName && typeof acc.lastName && typeof acc.userName && typeof acc.password !='undefined'){
+        dataLayer.checkSignUp(acc,function(found,id){
+            res.send({ success: found, id: id });
+        });
+    }
+    else
+    {
+        res.send({
+            error:true,
+        });
+    }
 });
 //send all projects
 app.post("/getGroupLists",function(req,res){
@@ -132,7 +149,8 @@ app.delete("/deleteTask/:id",function(req,res){
 app.put("/updateTask",function(req,res){
     var id=req.body._id;
     var new_name=req.body.new_name;
-    if(new_name != ""){
+
+    if(typeof new_name != 'undefined'){
         dataLayer.updateTask(id,new_name,function(){
             dataLayer.getTaskSet(userID,listName,function(dtSet){
                 res.send(dtSet);

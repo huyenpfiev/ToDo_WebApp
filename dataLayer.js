@@ -1,5 +1,11 @@
 var MongoClient=require('mongodb').MongoClient;
 var uri="mongodb+srv://DinhHuyen:Huyendien13-08@cluster0-mlysy.mongodb.net/ToDoList?retryWrites=true";
+// import dependencies
+//import dotenv from 'dotenv';
+// set up dotenv
+//require('dotenv').config();
+//var uri = process.env.MONGOLAB_URI;
+
 var client=new MongoClient(uri,{useNewUrlParser:true});
 var db;
 ObjectID=require('mongodb').ObjectID;

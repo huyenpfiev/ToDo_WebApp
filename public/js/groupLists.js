@@ -5,8 +5,7 @@ var userID={
 }
 groupLists.controller("groupController", function($scope,$http) {
     $scope.formData = {};
-    console.log($scope.formData);
-    
+  
     // when landing on the page, get all projects and show them
     $http.post('/getGroupLists',userID)
         .success(function(data) {
@@ -19,7 +18,8 @@ groupLists.controller("groupController", function($scope,$http) {
 
     // when submitting the add form, send the text to the node API
     $scope.createProject = function() {
-        $http.post('/addProject', $scope.formData)
+    
+            $http.post('/addProject', $scope.formData)
             .success(function(data) {
                 $scope.formData = {}; 
                 $scope.groups = data;
@@ -27,7 +27,10 @@ groupLists.controller("groupController", function($scope,$http) {
             })
             .error(function(data) {
                 console.log('Error: ' + data);
+                
             });
+        
+        
     };
 
     // delete a project 
@@ -47,6 +50,10 @@ groupLists.controller("groupController", function($scope,$http) {
     $scope.openProject=function(name){
         localStorage.setItem("listName",name);
         window.location="toDoList.html";
+    };
+    //log out
+    $scope.logout=function(){
+        window.location="index.html";
     };
     
 

@@ -10,6 +10,7 @@ ListeaFaire.controller("mainController", function($scope,$http) {
     $scope.edit=false;
     $scope.hidden1=false;
     $scope.hidden2=true;
+    
     // when landing on the page, get all todos and show them
     $http.post('/getTaskSet',listName)
         .success(function(data) {
@@ -47,7 +48,9 @@ ListeaFaire.controller("mainController", function($scope,$http) {
     };
     //update a task
     $scope.updateTodo = function(task) {
-        
+        if(typeof task.new_name === 'undefined'){
+            task.new_name=task.name;
+        }
         $http.put('/updateTask', task)
             .success(function(data) {
                 $scope.formData = {}; 
@@ -70,6 +73,14 @@ ListeaFaire.controller("mainController", function($scope,$http) {
             .error(function(data) {
                 console.log('Error: ' + data);
             });
+    };
+    //logout
+    $scope.logout=function(){
+        window.location="index.html";
+    };
+    
+    $scope.back=function(){
+        window.location="groupLists.html";
     };
 
 });

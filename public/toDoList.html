@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Liste Choses a Faire</title>
+    <title>Tasks</title>
     <script src="js/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -12,18 +12,21 @@
 </head>
 
 <body ng-controller="mainController">
-
+  
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{laliste[0].list_name}}</h3>
-       
+        <div >
+            <button type="submit" ng-click="back()" >Back</button>
+            <button type="submit" ng-click="logout()" style="float: right;">Log out</button> 
+        </div>
         <div class="card-body">
                 <form>
                         <div class="form-row">
                                 <div class="col-10">
-                                    <input type="text" class="form-control" placeholder="Write something to do" ng-model="formData.name">
+                                    <input type="text" class="form-control" placeholder="Write something to do" ng-model="formData.name" required>
                                 </div>
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary" ng-click="createTodo()">Add a to-do</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="createTodo()" ng-disabled="!formData.name">Add a to-do</button>
                                 </div>
                             </div>
                   </form>
@@ -46,7 +49,7 @@
                 <td>
                   <span ng-show="!edit; x.done ==false">{{x.name}}</span>
                   <span ng-show="!edit; x.done ==true"><strike>{{x.name}}</strike></span>
-                  <input ng-show="edit == true" ng-model="x.new_name" autofocus>
+                  <input ng-show="edit == true" ng-model="x.new_name" autofocus required>
                 </td>
                 <td>
                     <span contenteditable="false" >{{x.date | date:'dd-MM-yyyy'}}</span> 

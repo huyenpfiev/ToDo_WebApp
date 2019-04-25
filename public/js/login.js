@@ -5,16 +5,20 @@ login.controller("loginController", function($scope,$http) {
     $scope.checkLogin = function() {
         $http.post('/checkLogin', $scope.formData)
             .success(function(data) {
-                if(data.success){
-                    $scope.error="Successful!";
-                    localStorage.setItem("userID",data.id);
-                    window.location="groupLists.html";
+                if(data.error == true){
+                    $scope.error="Please fill out all fields!";
                 }
                 else{
-                    $scope.error="Invalid!";
+                    if(data.success){
+                        $scope.error="Successful!";
+                        localStorage.setItem("userID",data.id);
+                        window.location="groupLists.html";
+                    }
+                    else{
+                        $scope.error="Invalid!";
+                    }
                 }
                 
-
             })
             .error(function(data) {
                 console.log('Error: ' + data);
