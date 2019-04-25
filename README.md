@@ -9,7 +9,7 @@
   ->change the path of "program" (see the file: launch.json)
 
 2. What I did:
-- Login
+- Login, logout
 - Register
 - Add and delete a project
 - Show all tasks of every project
